@@ -8,6 +8,7 @@ env:
     - POSTGRES_HOST:127.0.0.1
     - POSTGRES_PORT:5432
     - POSTGRES_USER= postgres
+    - POSTGRES_PASSWORD = postgres
 addons:
     - postgresql: "11.2"
 before_install:
@@ -17,7 +18,8 @@ before_install:
     - sudo cp /etc/postgresql/{9.6,11}/main/pg_hba.conf
     - sudo service postgresql restart 11 
     - docker build -t lavinascoz/appbdb-test -f ./server/Dockerfile ./server
-
+before_script:	before_script:
+    - psql -c 'CREATE ROLE travis SUPERUSER LOGIN PASSWORD 'postgres';' -U postgres1	
 script:
     - docker run -e CI=true lavinascoz/appbdb-test npm run test -- --coverage
 
