@@ -15,7 +15,7 @@ describe("GET /", function() {
   });
 
   describe('POST /employee/add', function() {
-    it('responds with status code 200', function(done) {
+    it('responds with status code 500', function(done) {
       supertest(app)
         .post('/employee/add/?fullname="Vanessa Cardozo"&id=2387454565645434&boss=&func="Manager"')
         .expect(500)
@@ -25,7 +25,7 @@ describe("GET /", function() {
         });
     });
 
-    it('responds with status code 200', function(done) {
+    it('responds with status code 500', function(done) {
       supertest(app)
         .post('/employee/add/?fullname=&id=&boss=&func="Manager"')
         .expect(500)
@@ -35,7 +35,7 @@ describe("GET /", function() {
         });
     });
 
-    it('responds with status code 200', function(done) {
+    it('responds with status code 500', function(done) {
       supertest(app)
         .post('/employee/add/?fullname="Carlos Cardozo"&id=111434&boss=&func="Manager"')
         .expect(500)
