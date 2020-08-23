@@ -6,6 +6,7 @@ const cors = require('cors')
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 const {Pool} = require('pg')
@@ -69,15 +70,19 @@ app.get('/', async (req, res) => {
     }finally{
 
     }
-    res.send(result.rows);
+    res.status(200).send(result.rows);
 })
 
 app.post('/employee/add', async (req, res) => {
     let id=req.query.id;
     let name=req.query.fullname;
-    let functionEmployee=req.query.function;
+    let functionEmployee=req.query.func;
     let bossNumber=  req.query.boss == ''?null:req.query.boss;
     let resultado;
+
+    if (id=='') return res.status(500).send({error:"Id field can not be empty"})
+    if (name=='') return res.status(500).send({error:"Name field can not be empty"})
+    if (functionEmployee=='') return res.status(500).send({error:"function field can not be empty"})
 
     try{
         let sql={
@@ -92,11 +97,14 @@ app.post('/employee/add', async (req, res) => {
         //console.log(resultado.rows)
     }catch (error){
         console.log(error)
-        return res.send({error:error});
+        if(error.code=="23505"){
+            return res.status(500).send({error:error.detail});
+        }
+        return res.status(500).send({error:error});
     }finally{
         
     }   
-    res.send({"mensaje":"Realizado"});
+    res.status(200).send({"mensaje":"Realizado"});
 })
 
 app.post('/employee/setboss', async (req, res) => {
@@ -111,7 +119,6 @@ app.post('/employee/setboss', async (req, res) => {
             values: [bossNumber,
                     id]
         }
-
         resultado= await pgClient.query(sql)
         console.log(resultado.rows)
     }catch (error){
@@ -120,9 +127,11 @@ app.post('/employee/setboss', async (req, res) => {
     }finally{
         
     }   
-    res.send({"mensaje":"Realizado"});
+    res.status(200).send({"mensaje":"Realizado"});
 })
 
 app.listen(3000, ()=>{
     console.log('Escuchando')
 })
+
+module.exports=app;

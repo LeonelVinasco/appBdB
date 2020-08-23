@@ -24,3 +24,19 @@ services:
       - POSTGRES_DATABASE=postgres
       - POSTGRES_PASSWORD=postgres_password
       - POSTGRES_PORT=5432  
+  tests:
+    build:
+        dockerfile: Dockerfile
+        context: ./server
+    volumes:
+        - ./server:/app
+    depends_on:
+      - api
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DATABASE=postgres
+      - POSTGRES_PASSWORD=postgres_password
+      - POSTGRES_PORT=5432
+    command: ["npm", "run", "test"]
+    
