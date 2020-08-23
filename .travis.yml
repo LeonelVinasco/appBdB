@@ -7,7 +7,6 @@ env:
     - POSTGRES_PASSWORD=
 
 before_install:
-    - psql -c 'create database postgres;' -U postgres
     - docker build -t lavinascoz/appbdb-test -f ./server/Dockerfile ./server
 
 script:
