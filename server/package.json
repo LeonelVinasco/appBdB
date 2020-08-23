@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -21,11 +19,5 @@
   "bugs": {
     "url": "https://github.com/LeonelVinasco/appBdB/issues"
   },
-  "homepage": "https://github.com/LeonelVinasco/appBdB#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "pg": "^8.3.2"
-  }
+  "homepage": "https://github.com/LeonelVinasco/appBdB#readme"
 }
