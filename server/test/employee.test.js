@@ -18,7 +18,7 @@ describe("GET /", function() {
     it('responds with status code 200', function(done) {
       supertest(app)
         .post('/employee/add/?fullname="Vanessa Cardozo"&id=2387454565645434&boss=&func="Manager"')
-        .expect(200)
+        .expect(500)
         .end(function(err, res) {
           if (err) return done(err);
           done();
@@ -28,7 +28,7 @@ describe("GET /", function() {
     it('responds with status code 200', function(done) {
       supertest(app)
         .post('/employee/add/?fullname=&id=&boss=&func="Manager"')
-        .expect(200)
+        .expect(500)
         .end(function(err, res) {
           if (err) return done(err);
           done();
@@ -38,7 +38,7 @@ describe("GET /", function() {
     it('responds with status code 200', function(done) {
       supertest(app)
         .post('/employee/add/?fullname="Carlos Cardozo"&id=111434&boss=&func="Manager"')
-        .expect(200)
+        .expect(500)
         .end(function(err, res) {
           if (err) return done(err);
           done();
