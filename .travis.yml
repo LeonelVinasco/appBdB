@@ -3,9 +3,7 @@ services:
     - docker
     - postgresql
 dist: trusty
-env:
-    global:
-    - POSTGRES_PASSWORD=
+
 addons:
     - postgresql: "11.2"
 before_install:
