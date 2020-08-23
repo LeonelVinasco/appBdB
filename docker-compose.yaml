@@ -13,8 +13,9 @@ services:
         dockerfile: Dockerfile
         context: ./server
     volumes:
-        - /app/node_modules
         - ./server:/app
+    depends_on:
+      - postgres
     ports:
         - 3000:3000
     environment:

@@ -29,7 +29,7 @@ pgClient
     .catch(err => console.log(err))
 
 pgClient
-.query(`CREATE OR REPLACE FUNCTION setboss(boss int,employee int) 
+.query(`CREATE OR REPLACE FUNCTION setboss(boss NUMERIC,employee NUMERIC) 
         RETURNS TABLE (employee_number NUMERIC, boss_number NUMERIC) AS
             $BODY$
                 UPDATE employee
@@ -57,8 +57,70 @@ pgClient
 .catch(err => console.log(err))
 
 app.get('/', async (req, res) => {
-        res.send('<h1>Prueba BdB</h1>')
-        //res.send({"hola":"hola"});
+    let sql={
+        text:`select * from employee`
+    }
+    let result;
+    try {
+        result= await pgClient.query(sql)
+    }catch (error) {
+        console.log(error)
+        return res.send({error:error});
+    }finally{
+
+    }
+    res.send(result.rows);
+})
+
+app.post('/employee/add', async (req, res) => {
+    let id=req.query.id;
+    let name=req.query.fullname;
+    let functionEmployee=req.query.function;
+    let bossNumber=  req.query.boss == ''?null:req.query.boss;
+    let resultado;
+
+    try{
+        let sql={
+            text:`SELECT * FROM employee($1,$2,$3,$4)`,
+            values: [id,
+                    name,
+                    functionEmployee,
+                    bossNumber]
+        }
+
+        resultado= await pgClient.query(sql)
+        //console.log(resultado.rows)
+    }catch (error){
+        console.log(error)
+        return res.send({error:error});
+    }finally{
+        
+    }   
+    res.send({"mensaje":"Realizado"});
+})
+
+app.post('/employee/setboss', async (req, res) => {
+    let bossNumber=  req.query.boss == ''?null:req.query.boss;
+    let id=req.query.id;
+    if (id=='') return res.send({error:"El campo número de empleado no puede ser vacío"})
+    let resultado;
+    console.log(req.query)
+    try{
+        let sql={
+            text:`SELECT * FROM setboss($1,$2)`,
+            values: [bossNumber,
+                    id]
+        }
+
+        resultado= await pgClient.query(sql)
+        console.log(resultado.rows)
+    }catch (error){
+        console.log(error)
+        return res.send({error:error});
+    }finally{
+        
+    }   
+    res.send({"mensaje":"Realizado"});
 })
 
 app.listen(3000, ()=>{
