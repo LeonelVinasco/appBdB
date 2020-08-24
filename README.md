@@ -43,23 +43,18 @@ Go to the main folder
 $ cd appBdB
 ```
 
-Build:
+Build and run:
 
 ```
-$ sudo docker-compose --build
+$ sudo docker-compose up --build
 
 ```
-Now the 4 containers were builded. client, api, postgres and test.
+Now the 4 containers were builded and are running. client, api, postgres and test.
 
 
 ### Test Locally
 
-At the moment the project has been built. 
-
-Run:
-```
-$ sudo docker-compose up
-```
+At the moment the project has been built and ran. 
 
 Open your browser and go to the following url
 
@@ -147,7 +142,7 @@ Content-Type: application/json
 
 ## List Employees
 **You send:**  A get request to 'http:localhost:3000/'.
-**You get:** A JSON data array with all the employees data.
+**You get:** A JSON data array with all the employees information.
 
 **Request:**
 ```json
