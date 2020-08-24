@@ -27,7 +27,7 @@ before_install:
     - sudo service postgresql restart
     - sleep 1
 before_script:
-    - psql -c 'CREATE ROLE travis SUPERUSER LOGIN PASSWORD 'postgres';' -U postgres1	
+    - psql -c 'CREATE ROLE travis SUPERUSER LOGIN PASSWORD 'postgres';' -U postgres	
 script:
     - docker run -e CI=true lavinascoz/appbdb-test npm run test -- --coverage
 
