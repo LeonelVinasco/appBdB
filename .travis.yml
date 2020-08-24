@@ -19,7 +19,9 @@ script:
 
 after_success:
     - docker build -t lavinascoz/appbdb-server ./server
+    - docker build -t lavinascoz/appdbd-client ./client
 
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     
     - docker push lavinascoz/appbdb-server
+    - docker push lavinascoz/appbdb-client
