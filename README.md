@@ -66,7 +66,7 @@ Now you'll see the web interface that appears in the next image:
 
 ![diagram](readmeImage1.jpg)
 
-At the top you can see 4 fields to fill with the employee information. The fields added to the database where employee_number, a unique identificator for every person, and boss_number. The only field allowed to be not null is the boss_number because the owner of the company couldnt have any boss.
+At the top you can see 4 fields to fill with the employee information. The fields added to the database where employee_number, a unique identificator for every person, and boss_number. The only field allowed to be null is the boss_number because the owner of the company couldnt have any boss.
 
 ![diagram](readmeImage2.jpg)
 
