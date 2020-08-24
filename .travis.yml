@@ -8,10 +8,6 @@ services:
     - docker
     - postgresql
 dist: trusty
-env:
-    global:
-    - POSTGRES_HOST:postgrsql
-    - POSTGRES_USER= postgres
 addons:
     - postgresql: "11.2"
 before_install:
