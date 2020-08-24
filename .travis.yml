@@ -5,6 +5,7 @@ services:
 dist: trusty
 before_install:
     - docker build -t lavinascoz/appbdb-test -f ./server/Dockerfile ./server
+    - psql -c 'create database postgres;' -U postgres
 script:
     - docker run -e CI=true lavinascoz/appbdb-test npm run test -- --coverage
 
