@@ -21,6 +21,11 @@ const pgClient = new Pool({
 pgClient.on('error', ()=> console.log('Lost PG connection'))
 
 pgClient
+    .query(`DROP TABLE IF EXISTS employees;` 
+        )
+    .catch(err => console.log(err))
+
+pgClient
     .query(`CREATE TABLE IF NOT EXISTS employee (
         employee_number NUMERIC PRIMARY KEY, 
         fullname VARCHAR(50) NOT NULL, 
