@@ -26,7 +26,7 @@ before_install:
     - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
     - sudo service postgresql restart
     - sleep 1
-before_script:	before_script:
+before_script:
     - psql -c 'CREATE ROLE travis SUPERUSER LOGIN PASSWORD 'postgres';' -U postgres1	
 script:
     - docker run -e CI=true lavinascoz/appbdb-test npm run test -- --coverage
