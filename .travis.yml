@@ -1,4 +1,9 @@
 sudo: required
+branches:
+    only:
+    - master
+    - develop
+    - bugfix/tests
 services:
     - docker
     - postgresql
