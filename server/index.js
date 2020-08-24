@@ -74,27 +74,25 @@ app.get('/', async (req, res) => {
 })
 
 app.post('/employee/add', async (req, res) => {
-    //console.log(req)
     let id;
-        let name;
-        let functionEmployee;
-        let bossNumber;
-        let resultado;
-    if (req.query){
+    let name;
+    let functionEmployee;
+    let bossNumber;
+    console.log(req._body)
+    
+    if(req._body){
+       id=req.body.field.id;
+       name=req.body.field.fullname;
+       functionEmployee=req.body.field.func;
+       bossNumber=  req.body.field.boss == ''?null:req.body.field.boss;
+    }else{
+        console.log("query")
         id=req.query.id;
         name=req.query.fullname;
         functionEmployee=req.query.func;
         bossNumber=  req.query.boss == ''?null:req.query.boss;
-    }else{
-        id=req.body.field.id;
-        name=req.body.field.fullname;
-        functionEmployee=req.body.field.func;
-        bossNumber=  req.body.field.boss == ''?null:req.body.field.boss;
-        resultado;
+    
     }
-    
-
-    
 
     if (id=='') return res.status(500).send({error:"Id field can not be empty"})
     if (name=='') return res.status(500).send({error:"Name field can not be empty"})
@@ -108,13 +106,11 @@ app.post('/employee/add', async (req, res) => {
                     functionEmployee,
                     bossNumber]
         }
-
         resultado= await pgClient.query(sql)
-        //console.log(resultado.rows)
     }catch (error){
-        console.log(error)
+        console.log(error.code)
         if(error.code=="23505"){
-            return res.status(500).send({error:error.detail});
+            return res.send({"error":error,"errorcode":"23505"});
         }
         return res.status(500).send({error:error});
     }finally{

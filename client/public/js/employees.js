@@ -1,29 +1,5 @@
 $(document).ready(function(e){
-buildDataTable('tableEmployees');
-// function buildDataTable(id_table){
-//     $('#'+id_table).DataTable({
-//         responsive:true,
-//         paging:true,
-//         ordering:true,
-//         pageLength:10,
-//         bLengthChange:false,
-//         language:{
-//             sProcessing: 'Processing'
-//         }
-//     })
-// }
-$('#tableEmployees').DataTable({
-    columnDefs: [{
-        targets: [0],
-        orderData: [0, 1]
-    }, {
-        targets: [1],
-        orderData: [1, 0]
-    }, {
-        targets: [4],
-        orderData: [4, 0]
-    }]
-});
+
 });
 
 
@@ -68,7 +44,7 @@ $('.ui.form.segment.error').form({
         onSuccess: function (event, field){
             $.ajax({
                 type:"POST",
-                url:"http://localhost:3000/employee/add",
+                url:"http://localhost:5000/employee/add",
                 contentType: 'application/json',
                 data:JSON.stringify({
                     field
@@ -77,11 +53,17 @@ $('.ui.form.segment.error').form({
                 cache:false,
                 timeout: 6000,
                 success: function(data){
+                    console.log(data)
                     if (data.mensaje){
                         alert('Ingresado');
                         window.location.reload();
-                    }else{
-                        alert('Error');
+                    }else if(data.error){
+                        if(data.errorcode){
+                            alert('Already exists and employee with the ID number');
+                        }else{
+                            alert('Error, try again');
+                        }
+                        
                     }
                 }
             })

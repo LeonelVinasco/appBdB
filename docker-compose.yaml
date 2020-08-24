@@ -8,13 +8,6 @@ services:
       - POSTGRES_DATABASE=postgres
       - POSTGRES_PASSWORD=postgres_password
       - POSTGRES_PORT=5432 
-  nginx:
-    restart: always
-    build:
-      dockerfile: Dockerfile
-      context: ./nginx
-    ports:
-      - '3000:80'
   api:
     build:
         dockerfile: Dockerfile
@@ -56,4 +49,10 @@ services:
       - api
     ports:
         - 4000:3001
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DATABASE=postgres
+      - POSTGRES_PASSWORD=postgres_password
+      - POSTGRES_PORT=5432
     
