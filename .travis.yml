@@ -1,17 +1,10 @@
 sudo: required
-branches:
-    only:
-    - master
-    - develop
-    - bugfix/tests
 services:
     - docker
     - postgresql
 dist: trusty
-addons:
-    - postgresql: "11.2"
 before_install:
-  - docker build -t lavinascoz/appbdb-test -f ./server/Dockerfile ./server
+    - docker build -t lavinascoz/appbdb-test -f ./server/Dockerfile ./server
 script:
     - docker run -e CI=true lavinascoz/appbdb-test npm run test -- --coverage
 
