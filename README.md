@@ -48,6 +48,7 @@ Build:
 ```
 $ sudo docker-compose --build
 
+```
 Now the 4 containers are builded. client, api, postgres and test.
 
 End with an example of getting some data out of the system or using it for a little demo
@@ -57,14 +58,15 @@ End with an example of getting some data out of the system or using it for a lit
 At the moment the project has been builded. 
 
 Run:
-
 ```
 $ sudo docker-compose up
+```
 
 Open your browser and go to the following url
 
 ```
 http://localhost:4000
+```
 
 Now you'll see the web interface that appears in the next image:
 
