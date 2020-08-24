@@ -49,13 +49,12 @@ Build:
 $ sudo docker-compose --build
 
 ```
-Now the 4 containers are builded. client, api, postgres and test.
+Now the 4 containers were builded. client, api, postgres and test.
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ### Test Locally
 
-At the moment the project has been builded. 
+At the moment the project has been built. 
 
 Run:
 ```
@@ -83,9 +82,6 @@ The test container runs the unit test automatically when you run the docker-comp
 ### Break down into end to end tests
 
 The test includes on the project, test the api functionality. Especifically their 3 functions. Add a new employee, set a employee boss, and list all the employees.
-
-
-
 
 
 ## Built With
