@@ -75,8 +75,8 @@ At the top you can see 4 fields to fill with the employee information. The field
 
 ![diagram](readmeImage2.jpg)
 
-When you type the data and press enter or you click the submit button, a confirmation dialog will appear telling you that the operation was succesful.
-Then when you click Accept, the person will appear at the botton of the table.
+When you type the data and press enter or click the submit button, a confirmation dialog will appear telling you that the operation was made succesfully.
+Then when you click Accept, the person will appear at the bottom of the data table.
 
 ![diagram](readmeImage3.jpg)
 
@@ -102,7 +102,7 @@ and
 http://localhost:3000/employee/setboss
 ```
 
-The setboss operation, makes and update to the employee's boss.
+The setboss operation updates an employee's boss.
 
 ## Response Codes 
 ### Response Codes
@@ -172,6 +172,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* To the BdB Human Resources dependecy
+* To the engineers that made the skills test
