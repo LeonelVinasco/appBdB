@@ -70,9 +70,80 @@ http://localhost:4000
 Now you'll see the web interface that appears in the next image:
 
 ![diagram](readmeImage1.jpg)
+
+At the top you can see 4 fields to fill with the employee information. The fields added to the database where employee_number, a unique identificator for every person, and boss_number. The only field allowed to be not null is the boss_number because the owner of the company couldnt have any boss.
+
 ![diagram](readmeImage2.jpg)
+
+When you type the data and press enter or you click the submit button, a confirmation dialog will appear telling you that the operation was succesful.
+Then when you click Accept, the person will appear at the botton of the table.
+
 ![diagram](readmeImage3.jpg)
 
+## API Documentation
+
+This API uses POST request to communicate and HTTP response codes to indenticate status and errors. All responses come in standard JSON. All requests must include a content-type of application/json and the body must be valid JSON.
+
+As i told before the web app have 4 containers. One of this is the server, where is implemented the CR operations. This server is exposed on the port 3000. The client is expose on the port 4000. So if you want to make operations with the employees connecting to the API you have to use this url.
+
+```
+http://localhost:3000
+```
+
+The routes you can use to make operations are:
+
+```
+http://localhost:3000/employee/add
+```
+
+and
+
+```
+http://localhost:3000/employee/setboss
+```
+
+The setboss operation, makes and update to the employee's boss.
+
+## Response Codes 
+### Response Codes
+```
+200: Success
+409: The ID you are trying to insert already exists in the database.
+500: Server Error
+```
+## employee/add
+**You send:**  The employee data.
+**You get:** An success message.
+
+**Request:**
+```json
+POST /login HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "id": "5478934",
+    "fullname": "Camila Rodríguez" ,
+    "func": "Manager",
+    "boss": "45678912"
+}
+```
+
+## employee/setboss
+**You send:**  The employee and the boss id number.
+**You get:** A success message.
+
+**Request:**
+```json
+POST /login HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "id": "5478934",
+    "boss": "45678912"
+}
+```
 
 ## Running the tests
 

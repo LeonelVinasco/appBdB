@@ -55,11 +55,11 @@ $('.ui.form.segment.error').form({
                 success: function(data){
                     console.log(data)
                     if (data.mensaje){
-                        alert('Ingresado');
+                        alert('Employee Added!');
                         window.location.reload();
                     }else if(data.error){
                         if(data.errorcode){
-                            alert('Already exists and employee with the ID number');
+                            alert('Already exists and employee with that ID number');
                         }else{
                             alert('Error, try again');
                         }
