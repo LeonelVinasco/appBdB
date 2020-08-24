@@ -1,4 +1,4 @@
-# Employees Management Web App
+# Employees Management Web App v1.0.0
 
 This is a web app for managing employees data, mainly to know the hierarchy on the companies.
 

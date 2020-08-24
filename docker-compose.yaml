@@ -12,8 +12,6 @@ services:
     build:
         dockerfile: Dockerfile
         context: ./server
-    volumes:
-        - ./server:/app
     depends_on:
       - postgres
     ports:
@@ -28,8 +26,6 @@ services:
     build:
         dockerfile: Dockerfile
         context: ./server
-    volumes:
-        - ./server:/app
     depends_on:
       - api
     environment:
@@ -43,8 +39,6 @@ services:
     build:
         dockerfile: Dockerfile
         context: ./client
-    volumes:
-        - ./client:/client
     depends_on:
       - api
     ports:
