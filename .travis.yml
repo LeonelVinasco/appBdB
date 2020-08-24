@@ -14,6 +14,8 @@ env:
     - POSTGRES_USER= postgres
 addons:
     - postgresql: "11.2"
+before_install:
+  - docker build -t lavinascoz/appbdb-test -f ./server/Dockerfile.dev ./server
 script:
     - docker run -e CI=true lavinascoz/appbdb-test npm run test -- --coverage
 
