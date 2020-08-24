@@ -111,13 +111,13 @@ The setboss operation updates an employee's boss.
 409: The ID you are trying to insert already exists in the database.
 500: Server Error
 ```
-## employee/add
+## Add Employee
 **You send:**  The employee data.
 **You get:** An success message.
 
 **Request:**
 ```json
-POST /login HTTP/1.1
+POST /employee/add HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
@@ -129,13 +129,13 @@ Content-Type: application/json
 }
 ```
 
-## employee/setboss
+## Set Boss
 **You send:**  The employee and the boss id number.
 **You get:** A success message.
 
 **Request:**
 ```json
-POST /login HTTP/1.1
+POST /employee/setboss HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
@@ -143,6 +143,15 @@ Content-Type: application/json
     "id": "5478934",
     "boss": "45678912"
 }
+```
+
+## List Employees
+**You send:**  A get request to 'http:localhost:3000/'.
+**You get:** A JSON data array with all the employees data.
+
+**Request:**
+```json
+GET / HTTP/1.1
 ```
 
 ## Running the tests
